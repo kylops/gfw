@@ -18,6 +18,8 @@ define([
 
     className: 'widget widget-timeline',
 
+    id: 'widget-timeline',
+
     template: Handlebars.compile(tpl),
 
     options: {

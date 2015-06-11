@@ -9,6 +9,7 @@ require([
   'chosen',
   'map/utils',
   'enquire',
+  'introJs',
   'mps',
   'map/router',
   'views/SourceWindowView',
@@ -31,7 +32,7 @@ require([
   'views/DownloadView',
 
   '_string'
-], function($, _, Class, Backbone, chosen, utils, enquire, mps, Router, SourceWindowView, SourceMobileFriendlyView, ExperimentsPresenter, AnalysisService, CountryService, DataService, MapView,
+], function($, _, Class, Backbone, chosen, utils, enquire, introJs, mps, Router, SourceWindowView, SourceMobileFriendlyView, ExperimentsPresenter, AnalysisService, CountryService, DataService, MapView,
     MapControlsView, MapControlsMobileView, TabsView, AnalysisResultsView, LayersNavView, LegendView, TimelineView, HeaderView, FooterView, NotificationsView, DownloadView) {
 
   'use strict';
@@ -52,6 +53,7 @@ require([
       window.analysis = AnalysisService;
       window.countryService = CountryService;
       window.ds = DataService;
+      this.startIntro();
     },
 
     /**
@@ -87,6 +89,7 @@ require([
       new SourceWindowView();
       new SourceMobileFriendlyView();
       new NotificationsView();
+
     },
 
     /**
@@ -97,6 +100,37 @@ require([
         handlebars: typeof(Handlebars) === 'undefined' ? null : Handlebars.compile
       });
     },
+
+    startIntro: function(){
+      window.intro = introJs();
+      intro.setOptions({
+        steps: [{
+            intro: "Hello world!"
+          },{
+            element: '#layers-menu',
+            intro: "Here you have the layers.",
+            position: 'bottom'
+          },{
+            element: '#module-legend',
+            intro: "This is the legend.",
+            position: 'right'
+          },{
+            element: '#module-tabs',
+            intro: "This is the tab",
+            position: 'left'
+          },{
+            element: '#module-map-controls',
+            intro: 'Those are the map controls.',
+            position: 'right'
+          },{
+            element: '.timeline-container',
+            intro: 'This is the timeline.',
+            position: 'top'
+          }]
+      });
+      intro.start();
+    }
+
 
   });
 

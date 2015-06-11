@@ -372,6 +372,9 @@
   width: 100%;
   @include clearfix();
   @media (min-width: $br-mobile){
+    .layout-header &{
+      position: relative !important;
+    }
     position: relative;
     background: rgba(#FFF,0.8);
     border-bottom: 1px solid $border;
