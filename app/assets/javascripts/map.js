@@ -102,33 +102,36 @@ require([
     },
 
     startIntro: function(){
-      window.intro = introJs();
-      intro.setOptions({
-        steps: [{
-            intro: "Hello world!"
-          },{
-            element: '#layers-menu',
-            intro: "Here you have the layers.",
-            position: 'bottom'
-          },{
-            element: '#module-legend',
-            intro: "This is the legend.",
-            position: 'right'
-          },{
-            element: '#module-tabs',
-            intro: "This is the tab",
-            position: 'left'
-          },{
-            element: '#module-map-controls',
-            intro: 'Those are the map controls.',
-            position: 'right'
-          },{
-            element: '.timeline-container',
-            intro: 'This is the timeline.',
-            position: 'top'
-          }]
-      });
-      intro.start();
+      window.onload = function(){
+        var intro = introJs();
+        intro.setOptions({
+          disableInteraction: false,
+          steps: [{
+              intro: "Welcome to Global Forest Watch! <b>I'm a bold string</b>"
+            },{
+              element: '#layers-menu',
+              intro: "Here you have the layers.",
+              position: 'bottom'
+            },{
+              element: '#module-legend',
+              intro: "This is the legend.",
+              position: 'right'
+            },{
+              element: '#module-tabs',
+              intro: "This is the tab",
+              position: 'left'
+            },{
+              element: '#module-map-controls',
+              intro: 'Those are the map controls.',
+              position: 'right'
+            },{
+              element: '.timeline-container',
+              intro: 'This is the timeline.',
+              position: 'top'
+            }]
+        });
+        intro.start();
+      }
     }
 
 
