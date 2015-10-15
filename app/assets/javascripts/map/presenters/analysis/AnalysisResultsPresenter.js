@@ -161,6 +161,7 @@ define([
         // Subscribe button just should be activated
         // when a analysis is succesfully rendered.
         this.view.$tab.addClass('is-analysis');
+        this.view.$tab.find('.tab-analysis').addClass('scroll-max');
         mps.publish('Analysis/toggle');
         this._setSubscribeButton();
       }

@@ -507,6 +507,8 @@ define([
       mps.publish('AnalysisResults/Delete');
       this.view._removeCartodblayer();
       this.view.$el.removeClass('is-analysis');
+      this.view.$el.find('.tab-analysis').removeClass('scroll-max');
+
       // if(!this.status.get('dont_analyze')){
       //   console.log('cause');
       //   mps.publish('Analysis/toggle')

@@ -147,6 +147,14 @@ $w-control: 44px;
         &.selected{
           display: block;
         }
+        .scroll-max {
+          max-height: 50vh;
+          overflow-y: auto;
+          overflow-x: hidden;
+          @media (min-height: 750px){
+            max-height: none;
+          }
+        }
       }
     }
   }
