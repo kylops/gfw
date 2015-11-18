@@ -1,9 +1,24 @@
-WITH a as (select zoom('!scale_denominator!') as current_zoom), b as ( SELECT cartodb_id,the_geom_webmercator,c , {{column}} from ov_0_{{table}}, a where current_zoom = 0 UNION SELECT cartodb_id,the_geom_webmercator,c , {{column}} from ov_1_{{table}}, a where current_zoom = 1 UNION SELECT cartodb_id,the_geom_webmercator,c , {{column}} from ov_2_{{table}}, a where current_zoom = 2 UNION SELECT cartodb_id,the_geom_webmercator,c , {{column}} from ov_3_{{table}}, a where current_zoom = 3 UNION SELECT cartodb_id,the_geom_webmercator,c , {{column}} from ov_4_{{table}}, a where current_zoom = 4 UNION SELECT cartodb_id,the_geom_webmercator,c , {{column}} from ov_5_{{table}}, a where current_zoom = 5 UNION SELECT cartodb_id,the_geom_webmercator,c , {{column}} from ov_6_{{table}}, a where current_zoom = 6 UNION SELECT cartodb_id,the_geom_webmercator,c , {{column}} from ov_7_{{table}}, a where current_zoom = 7 UNION SELECT cartodb_id,the_geom_webmercator,c , {{column}} from ov_8_{{table}}, a where current_zoom = 8 UNION SELECT cartodb_id,the_geom_webmercator,1 as c, {{column}} from {{table}}, a where current_zoom > 8)
-SELECT cartodb_id, the_geom_webmercator, {{column}}
-FROM b
-{{#if currentDate}}
-WHERE
-  {{column}} >= '{{startDate}}'
-  AND
-  {{column}} <= '{{endDate}}'
-{{/if}}
+WITH a as (select zoom('!scale_denominator!') as current_zoom), b as ( 
+SELECT 
+cartodb_id,the_geom_webmercator,c , {{column}} from ov_0_{{table}}, a where current_zoom = 0  {{#if currentDate}} AND {{column}} >= '{{startDate}}' AND {{column}} <= '{{endDate}}' {{/if}}
+UNION 
+SELECT cartodb_id,the_geom_webmercator,c , {{column}} from ov_1_{{table}}, a where current_zoom = 1   {{#if currentDate}} AND {{column}} >= '{{startDate}}' AND {{column}} <= '{{endDate}}' {{/if}}
+UNION 
+SELECT cartodb_id,the_geom_webmercator,c , {{column}} from ov_2_{{table}}, a where current_zoom = 2   {{#if currentDate}} AND {{column}} >= '{{startDate}}' AND {{column}} <= '{{endDate}}' {{/if}}
+UNION 
+SELECT cartodb_id,the_geom_webmercator,c , {{column}} from ov_3_{{table}}, a where current_zoom = 3   {{#if currentDate}} AND {{column}} >= '{{startDate}}' AND {{column}} <= '{{endDate}}' {{/if}}
+UNION 
+SELECT cartodb_id,the_geom_webmercator,c , {{column}} from ov_4_{{table}}, a where current_zoom = 4   {{#if currentDate}} AND {{column}} >= '{{startDate}}' AND {{column}} <= '{{endDate}}' {{/if}}
+UNION 
+SELECT cartodb_id,the_geom_webmercator,c , {{column}} from ov_5_{{table}}, a where current_zoom = 5   {{#if currentDate}} AND {{column}} >= '{{startDate}}' AND {{column}} <= '{{endDate}}' {{/if}}
+UNION 
+SELECT cartodb_id,the_geom_webmercator,c , {{column}} from ov_6_{{table}}, a where current_zoom = 6   {{#if currentDate}} AND {{column}} >= '{{startDate}}' AND {{column}} <= '{{endDate}}' {{/if}}
+UNION 
+SELECT cartodb_id,the_geom_webmercator,c , {{column}} from ov_7_{{table}}, a where current_zoom = 7   {{#if currentDate}} AND {{column}} >= '{{startDate}}' AND {{column}} <= '{{endDate}}' {{/if}}
+UNION 
+SELECT cartodb_id,the_geom_webmercator,c , {{column}} from ov_8_{{table}}, a where current_zoom = 8   {{#if currentDate}} AND {{column}} >= '{{startDate}}' AND {{column}} <= '{{endDate}}' {{/if}}
+UNION 
+SELECT cartodb_id,the_geom_webmercator,1 as c, {{column}} from {{table}}, a where current_zoom > 8 AND the_geom && !bbox!  {{#if currentDate}} AND {{column}} >= '{{startDate}}' AND {{column}} <= '{{endDate}}' {{/if}}
+)
+SELECT cartodb_id, the_geom_webmercator, c, {{column}} FROM b
+
