@@ -19,7 +19,10 @@ define([
           options: {
             sql: sql,
             cartocss: cartocss,
-            cartocss_version: "2.3.0"
+            cartocss_version: "2.3.0",
+            geom_column: "the_raster_webmercator",
+            geom_type: "raster",
+            raster_band: 1
           }
         }]
       };
