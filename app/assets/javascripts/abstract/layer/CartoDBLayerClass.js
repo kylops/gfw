@@ -72,7 +72,7 @@ define([
     setInfowindow: function() {
       this.infowindow = cdb.vis.Vis.addInfowindow(this.map, this.cdbLayer.getSubLayer(0), this.options.interactivity, {
         infowindowTemplate: TPL,
-        templateType: 'handlebars',
+        templateType: 'mustache',
       });
       this.infowindowsButtons();
       this.infowindow.model.on('change', _.bind(function(model) {
