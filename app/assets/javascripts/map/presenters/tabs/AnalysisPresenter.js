@@ -50,6 +50,7 @@ define([
       'terrailoss': 'terrai-alerts',
       'prodes': 'prodes-loss',
       'guyra': 'guyra-loss',
+      'umd_as_it_happens': 'glad-alerts',
       'forest2000': 'umd-loss-gain'
     },
 
@@ -477,8 +478,8 @@ define([
      */
     _publishAnalysis: function(resource, failed) {
       this.status.set('resource', resource);
-      // this._setAnalysisBtnVisibility();
       mps.publish('Place/update', [{go: false}]);
+
       //Open tab of analysis
       this.view.openTab(resource.type);
 

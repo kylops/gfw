@@ -48,6 +48,7 @@ define([
       'fires': 'nasa-active-fires',
       'modis': 'quicc-alerts',
       'terrailoss': 'terrai-alerts',
+      'umd_as_it_happens': 'glad-alerts',
       'prodes': 'prodes-loss',
       'guyra': 'guyra-loss',
       'forest2000': 'umd-loss-gain'
