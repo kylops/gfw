@@ -13,6 +13,7 @@ require "active_model"
 Bundler.require(:default, Rails.env)
 
 
+
 module Gfw
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -27,6 +28,13 @@ module Gfw
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+
+
+    # config/application.rb
+    config.assets.initialize_on_precompile = false
+
+
+
     I18n.enforce_available_locales = false
     config.assets.paths << File.join(Rails.root, 'vendor', 'assets', 'bower_components')
     config.autoload_paths += %W(#{config.root}/lib)
@@ -39,8 +47,6 @@ module Gfw
     config.assets.precompile.shift
 
 
-    # change the value to false to fix the heroku deployment problem
-    config.assets.initialize_on_precompile = false
 
     # Explicitly register the extensions we are interested in compiling
     config.assets.precompile.push(Proc.new do |path|
